@@ -22,8 +22,8 @@
 			<!-- http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ -->
 			<id>ttbox-repository-release</id>
 			<url>https://github.com/gabuzomeu/maven-repo/raw/master/release/</url>
-		</repository> 
- 
+	 	</repository> 
+        </distributionManagement>
      <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Internal Api -->
