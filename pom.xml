@@ -26,6 +26,17 @@
 			<url>https://raw.github.com/gabuzomeu/maven-repo/master/releases/</url>
 	 	</repository> 
 -->
+ 
+		<repository>
+			<id>ttbox-repository-release</id>
+			<url>file://~/project/maven-repo/releases/</url>
+	 	</repository> 
+
+ 
+                <repository>
+			<id>ttbox-repository-release</id>
+			<url>file://~/project/maven-repo/releases/</url>
+	 	</repository> 
         </distributionManagement>
 
 	<repositories>
