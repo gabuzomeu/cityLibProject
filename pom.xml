@@ -21,14 +21,8 @@
 		<repository>
 			<!-- http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ -->
 			<id>ttbox-repository-release</id>
-			<url>https://github.com/gabuzomeu/maven-repo/raw/master/</url>
-		</repository>
-		<snapshotRepository>
-			<id>ttbox-repository-snapshots</id>
-			<name>Snapshots Repository</name>
-			<url>https://github.com/gabuzomeu/maven-repo/raw/master/</url>
-		</snapshotRepository>
-	</distributionManagement>
+			<url>https://github.com/gabuzomeu/maven-repo/raw/master/release/</url>
+		</repository> 
  
      <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
