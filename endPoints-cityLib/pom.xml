@@ -147,7 +147,7 @@
         <dependency>
             <groupId>com.google.android.gcm</groupId>
             <artifactId>gcm-client</artifactId>
-            <version>3</version>
+            <version>${gcm.version}</version>
         </dependency>
 
         <dependency>

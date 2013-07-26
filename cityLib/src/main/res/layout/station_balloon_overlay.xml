@@ -54,7 +54,7 @@
 
         <LinearLayout
             android:id="@+id/balloon_block_panneau_velo"
-            android:layout_width="40dp"
+            android:layout_width="56dip"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
@@ -81,7 +81,7 @@
 
         <LinearLayout
             android:id="@+id/balloon_block_panneau_parking"
-            android:layout_width="40dp"
+            android:layout_width="56dip"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
             android:layout_marginRight="9dp"
@@ -108,7 +108,7 @@
 
         <LinearLayout
             android:id="@+id/balloon_block_panneau_ticket"
-            android:layout_width="40dp"
+            android:layout_width="56dip"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
@@ -161,7 +161,8 @@
             android:layout_below="@+id/veloDispoBulleFavorite"
             android:contentDescription="vplus"
             android:src="@drawable/vplus" />
-
+
+
         <ImageView
             android:id="@+id/balloon_streetview_image"
             android:layout_width="32dp"
@@ -175,8 +176,8 @@
 
         <ImageView
             android:id="@+id/balloon_navigation_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/balloon_item_address"
             android:contentDescription="Navigation"

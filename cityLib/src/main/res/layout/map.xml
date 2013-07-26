@@ -10,8 +10,8 @@
 
  <ToggleButton
         android:id="@+id/map_button_parking_cycle_switch"
-        android:layout_width="32dip"
-        android:layout_height="32dip"
+        android:layout_width="56dip"
+        android:layout_height="56dip"
         android:layout_gravity="right|bottom"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="55dp"
