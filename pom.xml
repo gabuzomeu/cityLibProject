@@ -29,7 +29,7 @@
  
 		<repository>
 			<id>ttbox-repository-release</id>
-			<url>file://~/project/maven-repo/releases/</url>
+			<url>${ttbox.repo.url}/releases/</url>
 	 	</repository>  
         </distributionManagement>
 
