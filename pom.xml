@@ -35,7 +35,7 @@
 
 	<repositories>
 	    <repository>
-		<id>ttbox-public-third-parties/</id>
+		<id>ttbox-public-third-parties</id>
 		<url>https://raw.github.com/gabuzomeu/maven-repo/master/third-parties/</url>
 	    </repository>
 	    <repository>
