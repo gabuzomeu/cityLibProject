@@ -30,13 +30,7 @@
 		<repository>
 			<id>ttbox-repository-release</id>
 			<url>file://~/project/maven-repo/releases/</url>
-	 	</repository> 
-
- 
-                <repository>
-			<id>ttbox-repository-release</id>
-			<url>file://~/project/maven-repo/releases/</url>
-	 	</repository> 
+	 	</repository>  
         </distributionManagement>
 
 	<repositories>
