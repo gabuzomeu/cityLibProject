@@ -169,10 +169,30 @@
                   <platform>${android.sdk.platform}</platform>
                   <path>${env.ANDROID_HOME}</path>
                </sdk>
+               <manifest>
+                  <debuggable>true</debuggable>
+               </manifest>
                <deleteConflictingFiles>true</deleteConflictingFiles>
                <undeployBeforeDeploy>true</undeployBeforeDeploy>
             </configuration>
             <extensions>true</extensions>
+          <executions>
+             <execution>
+                <id>manifestUpdate</id>
+                <phase>process-resources</phase>
+                <goals>
+                   <goal>manifest-update</goal>
+                </goals>
+             </execution>
+             <execution>
+                <id>alignApk</id>
+                <phase>package</phase>
+                <goals>
+                   <goal>zipalign</goal>
+                </goals>
+             </execution>
+          </executions>
+
          </plugin>
 
       </plugins>
