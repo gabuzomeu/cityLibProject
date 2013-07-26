@@ -6,7 +6,7 @@
 
    <groupId>eu.ttbox.android.cityLib</groupId>
    <artifactId>cityLibProject</artifactId>
-   <version>0.3.2</version>
+   <version>0.3.3-SNAPSHOT</version>
 
     <name>CityLib Project</name>
 
@@ -14,7 +14,7 @@
 		<url>https://github.com/gabuzomeu/cityLibProject</url>
 		<connection>scm:git:git@github.com:gabuzomeu/cityLibProject.git</connection>
 		<developerConnection>scm:git:git@github.com:gabuzomeu/cityLibProject.git</developerConnection>
-	  <tag>cityLibProject-0.3.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<distributionManagement>
