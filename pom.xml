@@ -18,13 +18,33 @@
 	</scm>
 
 	<distributionManagement>
-		<repository>
 			<!-- http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ -->
+                        <!-- http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
+<!--
+		<repository>
 			<id>ttbox-repository-release</id>
-			<url>https://raw.github.com/gabuzomeu/maven-repo/master/release/</url>
+			<url>https://raw.github.com/gabuzomeu/maven-repo/master/releases/</url>
 	 	</repository> 
+-->
         </distributionManagement>
+
+	<repositories>
+	    <repository>
+		<id>ttbox-public-third-parties/</id>
+		<url>https://raw.github.com/gabuzomeu/maven-repo/master/third-parties/</url>
+	    </repository>
+	    <repository>
+		<id>ttbox-public-releases</id>
+		<url>https://raw.github.com/gabuzomeu/maven-repo/master/releases</url>
+	    </repository>
+	</repositories>
+
+
      <properties>
+
+<github.global.server>ttbox-repository-release</github.global.server>
+
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Internal Api -->
 		<osm-lib.version>0.1.2</osm-lib.version>
@@ -164,7 +184,7 @@
 				</configuration>
 			</plugin>
 
-		</plugins>
+ 		</plugins>
 
 		<pluginManagement>
 			<plugins>
