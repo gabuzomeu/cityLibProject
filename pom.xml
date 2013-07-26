@@ -174,6 +174,7 @@
 
 		<pluginManagement>
 			<plugins>
+<!--
      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
@@ -189,7 +190,7 @@
           </dependency>
         </dependencies>
       </plugin>      
-
+-−>
 				<!-- http://maven-android-plugin-m2site.googlecode.com/svn/plugin-info.html -->
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
