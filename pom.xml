@@ -174,23 +174,7 @@
 
 		<pluginManagement>
 			<plugins>
-<!--
-     <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-            <version>1.8.1</version>
-        <configuration>
-          <connectionType>connection</connectionType>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-provider-gitexe</artifactId>
-            <version>1.8.1</version>
-          </dependency>
-        </dependencies>
-      </plugin>      
--−>
+ 
 				<!-- http://maven-android-plugin-m2site.googlecode.com/svn/plugin-info.html -->
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
