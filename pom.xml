@@ -76,6 +76,7 @@
 		<build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
 
 		<!-- Release -->
+	        <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
 		<android-maven-plugin.version>3.6.0</android-maven-plugin.version> <!-- 3.5.1 -->
 		<android.sdk.platform>18</android.sdk.platform>
 		<sign.alias>android</sign.alias>
@@ -83,7 +84,7 @@
 	</properties>
 
 
-<dependencyManagement>
+       <dependencyManagement>
 		<dependencies>
 			<!-- Android -->
 			<dependency>
@@ -205,6 +206,11 @@
 							</manifestEntries>
 						</archive>
 					</configuration>
+				</plugin>
+				 <plugin>
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-release-plugin</artifactId>
+				    <version>${maven-release-plugin.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
