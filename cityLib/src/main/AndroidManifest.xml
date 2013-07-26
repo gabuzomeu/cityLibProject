@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="43" android:versionName="0.3.1" package="eu.ttbox.velib">
+
+    <!-- android:minSdkVersion="9" -->
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="17"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+   
+   <!-- Billing Service -->
+   <uses-permission android:name="com.android.vending.BILLING"/>
+    
+    <!-- Api Messaging -->
+    <permission android:name="eu.ttbox.velib.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+
+    <uses-permission android:name="eu.ttbox.velib.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <!-- android:backupAgent=".service.backup.CityLibBackupAgent" -->
+    <application android:backupAgent=".service.backup.CityLibBackupAgent" android:debuggable="false" android:icon="@drawable/panneau_obligation_cycles" android:label="@string/app_name" android:name=".CityLibApplication" android:restoreAnyVersion="false" android:theme="@style/MyTheme">
+
+        <!-- Cloudmade Key http://developers.cloudmade.com/projects/web-maps-api/examples -->
+        <meta-data android:name="CLOUDMADE_KEY" android:value="bf761f5e98524bf88ac465bce90002b6"/>
+         
+        <!-- Bing Key https://www.bingmapsportal.com -->
+        <meta-data android:name="BING_KEY" android:value="AuBpNxDvcuq-mDB2oX-eT7NaiaRFBzsuR4R6DHqi30at_y2L6ACFt_MfnCR8qs7K"/>
+
+        <!-- Multi Windows -->
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:resource="@dimen/app_multiwindows_defaultSize_w"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_multiwindows_defaultSize_h"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:resource="@dimen/app_multiwindows_minSize_w"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:resource="@dimen/app_multiwindows_minSize_h"/>
+        
+
+
+        <!-- Service -->
+        <service android:enabled="true" android:exported="false" android:name=".service.VelibService"/>
+        <service android:enabled="true" android:exported="false" android:name=".service.osm.OsmMapTilesDownloadService">
+            <intent-filter>
+                <action android:name="eu.ttbox.velib.ACTION_OSM_MAPTILES_DOWNLOAD"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:label="@string/countdown_service_label" android:name=".countdown.CountdownTimerService">
+            <intent-filter>
+                <action android:name="ADD_TIMER"/>
+                <action android:name="REMOVE_TIMER"/>
+                <action android:name="STOP_TIMER"/>
+                <action android:name="START_TIMER"/>
+                <action android:name="STOP_ALARM"/>
+                <action android:name="GET_TIMERS"/>
+            </intent-filter>
+        </service>
+
+        <!-- Activity -->
+        <activity android:label="@string/app_name" android:name=".ui.help.HelpMainActivity">
+            <meta-data android:name="android.app.searchable.default_searchable" android:value=".ui.search.SearchableVeloActivity"/>
+        </activity>
+<!--         <activity -->
+<!--             android:name=".ui.help.HelpCircleActivity" -->
+<!--             android:label="@string/app_name" /> -->
+<!--         <activity -->
+<!--             android:name=".ui.help.HelpColorActivity" -->
+<!--             android:label="@string/app_name" /> -->
+<!--         <activity -->
+<!--             android:name=".ui.help.HelpStationDispoBubbleActivity" -->
+<!--             android:label="@string/app_name" /> -->
+<!--         <activity -->
+<!--             android:name=".ui.help.HelpConduiteCodeActivity" -->
+<!--             android:label="@string/app_name" /> -->
+        <activity android:label="@string/app_name" android:name=".CountDownTimerActivity">
+            <meta-data android:name="android.app.searchable.default_searchable" android:value=".ui.search.SearchableVeloActivity"/>
+        </activity>
+        <activity android:exported="false" android:name=".ui.about.AboutActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="eu.ttbox.velib.ui.about.ACTION_VIEW_ABOUT"/>
+                <action android:name="eu.ttbox.velib.ui.about.ACTION_VIEW_LICENCE"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name=".ui.about.VelibAccountActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:label="@string/app_name" android:launchMode="singleTask" android:name=".ui.search.SearchableVeloActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="eu.ttbox.velib.ui.search.ACTION_VIEW_FAVORITE"/>
+            </intent-filter>
+
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:exported="false" android:label="@string/app_name" android:launchMode="singleTask" android:name=".ui.search.SearchableGeocoderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <meta-data android:name="android.app.searchable" android:resource="@xml/geocoder_searchable"/>
+        </activity>
+        <activity android:exported="false" android:label="@string/app_name" android:name=".ui.preference.VelibPreferenceActivity"/>
+        
+<!--     android:uiOptions="splitActionBarWhenNarrow"     -->
+        <activity android:exported="true" android:label="@string/app_name" android:launchMode="singleTask" android:name=".VelibMapActivity" android:theme="@style/MapActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/> 
+                <category android:name="android.intent.category.LAUNCHER"/>
+                 <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+
+<!--             <meta-data -->
+<!--                 android:name="android.app.default_searchable" -->
+<!--                 android:value=".ui.search.SearchableGeocoderActivity" /> -->
+        </activity>
+
+          
+        <!-- Admob -->
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:name="com.google.ads.AdActivity"/>
+        
+        
+        <!-- Provides search suggestions for words and their definitions. -->
+        <provider android:authorities="eu.ttbox.velib.VeloContentProvider" android:name=".VeloContentProvider" android:readPermission="eu.ttbox.velib.provider.READ_MY_DATA" android:writePermission="eu.ttbox.velib.provider.WRITE_MY_DATA">
+            <path-permission android:pathPrefix="/search_suggest_query" android:readPermission="android.permission.GLOBAL_SEARCH"/>
+        </provider>
+        <provider android:authorities="eu.ttbox.velib.search.StationRecentSearchRecentSuggestionsProvider" android:exported="false" android:name=".search.StationRecentSearchRecentSuggestionsProvider"/>
+        <provider android:authorities="eu.ttbox.velib.GeocoderContentProvider" android:exported="false" android:name=".GeocoderContentProvider"/>
+        <provider android:authorities="org.osm.data" android:exported="false" android:name=".OSMPointsContentProvider"/>
+
+        <!-- Receiver -->
+
+
+        <!-- <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" -->
+        <!-- android:permission="com.google.android.c2dm.permission.SEND" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.REGISTRATION" /> -->
+        <!-- <category android:name="eu.ttbox.velib" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
+
+        <!-- Points to searchable activity so the whole app can invoke search. -->
+        <meta-data android:name="android.app.default_searchable" android:value=".ui.search.SearchableVeloActivity"/>
+        <!-- <meta-data android:name="android.app.default_searchable"   android:value=".ui.search.SearchableGeocoderActivity"/> -->
+        <meta-data android:name="com.google.android.backup.api_key" android:value="@string/backup_api_key"/>
+    </application>
+
+</manifest>

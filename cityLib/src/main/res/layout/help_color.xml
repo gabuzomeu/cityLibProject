@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/eu.ttbox.velib"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:id="@+id/help_station_page1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="214dp"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/help_text"
+            android:text="@string/help_station_circle_color_code" />
+
+        <eu.ttbox.velib.ui.help.wrapper.StationDispoHelpView
+            style="@style/help_station_dispo"
+            app:station_cycles="14"
+            app:station_parking="27" />
+
+        <eu.ttbox.velib.ui.help.wrapper.StationDispoHelpView
+            style="@style/help_station_dispo"
+            app:station_cycles="0"
+            app:station_parking="0" />
+
+        <TextView
+            style="@style/help_text"
+            android:text="@string/help_station_circle_color_unexpected" />
+
+        <eu.ttbox.velib.ui.help.wrapper.StationDispoHelpView
+            style="@style/help_station_dispo"
+            app:station_cycles="1"
+            app:station_parking="1" />
+
+        <TextView
+            style="@style/help_text"
+            android:text="@string/help_station_preson_expected_config" />
+
+        <!-- <fragment -->
+        <!-- android:id="@+id/fragment_admob_help_color" -->
+        <!-- android:name="eu.ttbox.velib.ui.admob.AdmobFragment" -->
+        <!-- android:layout_width="wrap_content" -->
+        <!-- android:layout_height="wrap_content" /> -->
+
+
+        <include
+            android:id="@+id/admob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/admob" />
+ 
+         
+    </LinearLayout>
+
+</ScrollView>
