@@ -13,8 +13,8 @@
 
 	<scm> <!-- git@github.com:gabuzomeu/cityLibProject.git-->
 		<url>https://github.com/gabuzomeu/cityLibProject</url>
-		<connection>scm:git@github.com:gabuzomeu/cityLibProject.git</connection>
-		<developerConnection>scm:git@github.com:gabuzomeu/cityLibProject.git</developerConnection>
+		<connection>scm:git:git@github.com:gabuzomeu/cityLibProject.git</connection>
+		<developerConnection>scm:git:git@github.com:gabuzomeu/cityLibProject.git</developerConnection>
 	</scm>
 
 	<distributionManagement>
