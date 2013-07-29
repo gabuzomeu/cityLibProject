@@ -11,14 +11,10 @@
 
     
    <artifactId>cityLib</artifactId>
-
-
-   <packaging>apk</packaging>
+    <packaging>apk</packaging>
 
    <name>City Lib</name>
 
-   <!-- <properties> --> 
-   <!-- </properties> -->
 
    <dependencies>
 
@@ -272,7 +268,7 @@
                      </sign>
                      <zipalign>
                         <skip>false</skip>
-                        <verbose>true</verbose>
+                        <verbose>false</verbose>
                         <inputApk>${project.build.directory}/${project.artifactId}.apk</inputApk>
                         <outputApk>${project.build.directory}/${project.artifactId}-signed-aligned.apk</outputApk>
                      </zipalign>
@@ -281,7 +277,8 @@
                         <versionCodeAutoIncrement>true</versionCodeAutoIncrement>
                      </manifest>
                      <proguard>
-                        <skip>false</skip>
+                         <skip>false</skip>
+                         <config>proguard.cfg</config>
                      </proguard>
                   </configuration>
                   <executions>

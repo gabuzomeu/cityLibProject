@@ -122,9 +122,10 @@ public class BubbleOverlayView<ITEM> extends FrameLayout {
 			}
 		});
 		//
+        float densityMultiplier = context.getResources().getDisplayMetrics().density;
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		params.gravity = Gravity.NO_GRAVITY;
-		params.width = 300;
+		//params.gravity = Gravity.NO_GRAVITY;
+ 	 	params.width = (int)(250*densityMultiplier);
 		// params.height = 300;
 
 		addView(layout, params);

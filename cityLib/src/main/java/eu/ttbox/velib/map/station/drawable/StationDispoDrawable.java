@@ -39,7 +39,7 @@ public class StationDispoDrawable extends View {
 	// Cache
 	private int cacheZoomLevel, cacheZoomLevelRadiusExternal;
 	private int radiusExternal, radiusInternal, radiusExternalEffectifWidth, radiusExternalEffectifRadius, radiusInternalBorder, radiusExternalBorder;
-	protected int textPaintSize = 16;
+	protected int textPaintSize = 14;
 
 	// Other
 	protected float densityMultiplier = 1f;
@@ -58,11 +58,10 @@ public class StationDispoDrawable extends View {
 		textPaint = new Paint();
 		textPaint.setColor(Color.BLACK);
 		textPaint.setAntiAlias(true);
-		textPaint.setTextSize(textPaintSize);
-		textPaint.setTypeface(Typeface.DEFAULT_BOLD); 
-		 
-		// textPaint.setTextSize(20*densityMultiplier);
+		textPaint.setTextSize(textPaintSize*densityMultiplier);
+		textPaint.setTypeface(Typeface.DEFAULT_BOLD);
 		textPaint.setTextAlign(Align.CENTER);
+
 		// Unkon values
 		circleUnkwonPaint = new Paint();
 		circleUnkwonPaint.setAntiAlias(true);
@@ -142,14 +141,14 @@ public class StationDispoDrawable extends View {
 	}
 
 	public void drawSelected(final Canvas canvas, final int zoomLevel, final Station station, final Point myScreenCoords) {
-		int radiusSelected = zoomLevel + 11; // Zoom 17 => 27
+		int radiusSelected = computeRadius( zoomLevel);//zoomLevel + 11; // Zoom 17 => 27
 		canvas.drawCircle(myScreenCoords.x, myScreenCoords.y, radiusSelected, selectedBorderPaint);
 	}
 
 	public int computeRadius(int zoomLevel) {
 		if (zoomLevel != cacheZoomLevel) {
 			// Compute Level
-			this.cacheZoomLevelRadiusExternal = zoomLevel + 11; // Zoom 17 => 28
+			this.cacheZoomLevelRadiusExternal = (int)((zoomLevel+4)*densityMultiplier); //zoomLevel+11 =  Zoom 17 => 28
 			// defineDrawConfigForRadiusExternal(this.radiusExternal);
 			// Save Cache
 			this.cacheZoomLevel = zoomLevel;
