@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
+import org.osmdroid.api.IGeoPoint;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
@@ -380,7 +381,9 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 	}
 
 	public void setMapViewTileSource(ITileSource tileSource) {
+        IGeoPoint center =  mapView.getMapCenter();
 		mapView.setTileSource(tileSource);
+        mapController.setCenter(center);
 	}
 
 	public ArrayList<ITileSource> getMapViewTileSources() {
