@@ -145,6 +145,13 @@
       <!-- <version>${slf4j-android.version}</version> -->
       <!-- </dependency> -->
 
+       <!-- Client SPDY -->
+       <dependency>
+           <groupId>com.squareup.okhttp</groupId>
+           <artifactId>okhttp</artifactId>
+           <version>${okhttp.version}</version>
+       </dependency>
+
    </dependencies>
 
    <build>

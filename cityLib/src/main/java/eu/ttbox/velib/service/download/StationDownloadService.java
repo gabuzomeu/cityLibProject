@@ -17,6 +17,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+
+import com.squareup.okhttp.OkHttpClient;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.VelibProvider;
@@ -36,10 +39,13 @@ public class StationDownloadService {
 	
 	private ConnectivityManager connectivityManager;
 
+    private OkHttpClient client;
+
 	public StationDownloadService(Context context) {
 		super();
 		this.context = context;
 		this.connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        this.client = new OkHttpClient();
 	}
 
 	public ArrayList<Station> donwloadStationsByProvider(VelibProvider velibProvider) {
@@ -53,7 +59,8 @@ public class StationDownloadService {
 			Log.d(TAG, String.format("Starting downloading stations from url [%s]", urlString));
 		try {
 			URL url = new URL(urlString);
-			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+			//HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection urlConnection = client.open(url);
 			urlConnection.setRequestMethod("GET");
 			urlConnection.setReadTimeout(AppConstants.CONNECTION_TIMEOUT);
 			urlConnection.setConnectTimeout(AppConstants.CONNECTION_TIMEOUT);

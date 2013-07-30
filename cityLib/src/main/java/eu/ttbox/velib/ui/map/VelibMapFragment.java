@@ -399,6 +399,10 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 		} catch (final IllegalArgumentException ignore) {
 			Log.e(TAG, "Error in reading TileSource : " + tileSourceName);
 		}
+        // Get The Default, Just in case does not exist anymore
+        if (tileSource==null) {
+            tileSource = TileSourceFactory.DEFAULT_TILE_SOURCE;
+        }
 		return tileSource;
 	}
 
