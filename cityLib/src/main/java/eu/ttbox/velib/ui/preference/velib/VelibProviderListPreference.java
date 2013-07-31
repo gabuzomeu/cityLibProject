@@ -20,21 +20,23 @@ import eu.ttbox.velib.model.VelibProvider;
  */
 public class VelibProviderListPreference extends ListPreference {
 
+    Context context;
+
     public VelibProviderListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         initVelibProvidersListValues();
     }
 
 
     @Override
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-//        int index = findIndexOfValue(getSharedPreferences().getString(  getKey(), "1"));
+
         int mClickedDialogEntryIndex  =findIndexOfValue(getValue());
+
         ListAdapter listAdapter =  new VelibProviderArrayAdapter(getContext(),
                 R.layout.pref_velibprovider_list_row, this.getEntryValues() ,mClickedDialogEntryIndex, this);
-
         builder.setAdapter(listAdapter, this);
-
 
         super.onPrepareDialogBuilder(builder);
 

@@ -2,6 +2,7 @@ package eu.ttbox.velib.ui.preference.velib;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
@@ -15,11 +16,13 @@ import android.widget.TextView;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.VelibProvider;
 
-public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> {
+public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implements View.OnClickListener {
 
     private int index;
     private int textViewResourceId;
     private Context mContext;
+
+    VelibProviderListPreference prefSrc;
 
     // Service
     private SharedPreferences prefs;
@@ -30,6 +33,7 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> {
         this.mContext = context;
         this.index = selected;
         this.textViewResourceId = textViewResourceId;
+        this.prefSrc  = prefSrc;
         // Service
         this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -76,6 +80,9 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> {
     public View newView(int position, ViewGroup parent) {
 
         View view = mInflater.inflate(textViewResourceId, parent, false);
+        view.setFocusable(false);
+        view.setFocusableInTouchMode(false);
+
         // Then populate the ViewHolder
         ViewHolder holder = new ViewHolder();
         holder.tv = (TextView) view.findViewById(R.id.themename);
@@ -87,6 +94,8 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> {
 
         // and store it inside the layout.
         view.setTag(holder);
+        // Listener
+        view.setOnClickListener(this);
         return view;
 
     }
@@ -97,5 +106,11 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> {
         RadioButton tb;
     }
 
+
+     @Override
+    public void onClick(View v)
+    {
+       this.prefSrc.getDialog().dismiss();
+    }
 
 }
