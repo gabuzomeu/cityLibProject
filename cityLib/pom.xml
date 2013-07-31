@@ -13,7 +13,7 @@
    <artifactId>cityLib</artifactId>
     <packaging>apk</packaging>
 
-   <name>City Lib</name>
+   <name>CityLib Android</name>
 
 
    <dependencies>
@@ -151,6 +151,7 @@
            <artifactId>okhttp</artifactId>
            <version>${okhttp.version}</version>
        </dependency>
+
 
    </dependencies>
 
