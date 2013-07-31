@@ -18,6 +18,13 @@
             android:key="providerSelect"
             android:negativeButtonText="@string/cancel"
             android:title="@string/prefs_providerSelect" />
+
+        <eu.ttbox.velib.ui.preference.velib.VelibProviderListPreference
+                android:key="providerSelect"
+                android:negativeButtonText="@string/cancel"
+                android:title="@string/prefs_providerSelect" />
+
+
         <eu.ttbox.velib.ui.preference.comp.IntEditTextPreference
                 android:defaultValue="100"
                 android:key="PROVIDER_DELTA_UPDATE_IN_DAY"

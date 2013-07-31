@@ -32,6 +32,7 @@ import eu.ttbox.velib.service.download.StationDownloadService;
 import eu.ttbox.velib.service.geo.GeoUtils;
 import eu.ttbox.velib.service.ws.direction.DirectionDownloadService;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirection;
+import eu.ttbox.velib.ui.preference.velib.VelibProviderLastUpdateHelper;
 
 public class VelibService extends Service {
 
@@ -128,7 +129,7 @@ public class VelibService extends Service {
     }
 
     public ArrayList<Station> getStationsByProviderWithCheckUpdateDate(VelibProvider velibProvider) {
-        String updateKey = getProviderStationsLastUpdateKey(velibProvider);
+        String updateKey = VelibProviderLastUpdateHelper.getProviderStationsLastUpdateKey(velibProvider);
         long lastUpdate = prefs.getLong(updateKey, Long.MIN_VALUE);
         long defaultDeltaTimeInMs = AppConstants.ONE_DAY_IN_MS * prefs.getInt(AppConstants.PREFS_KEY_PROVIDER_DELTA_UPDATE_IN_DAY, 100);
         boolean isToOld = System.currentTimeMillis() - lastUpdate > defaultDeltaTimeInMs;
@@ -196,7 +197,7 @@ public class VelibService extends Service {
             Log.i(TAG, "--- ------------------------------------------------------------- ---");
 
             // Keep Trace of Date Task
-            String updateKey = getProviderStationsLastUpdateKey(velibProvider);
+            String updateKey = VelibProviderLastUpdateHelper.getProviderStationsLastUpdateKey(velibProvider);
             final SharedPreferences.Editor localEdit = prefs.edit();
             localEdit.putLong(updateKey, System.currentTimeMillis());
             localEdit.commit();
@@ -204,10 +205,6 @@ public class VelibService extends Service {
         return dbStations;
     }
 
-    private String getProviderStationsLastUpdateKey(VelibProvider velibProvider) {
-        String key = new StringBuilder(AppConstants.PREFS_KEY_PROVIDER_LAST_UPDATE_BASE).append(velibProvider.name()).toString();
-        return key;
-    }
 
     private boolean isSameStationIdentifier(Station station, Station ref) {
     return station.getNumber().equals(ref.getNumber()) &&
