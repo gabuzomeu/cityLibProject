@@ -2,15 +2,13 @@ package eu.ttbox.velib.ui.preference.velib;
 
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.preference.ListPreference;
-import android.preference.Preference;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.VelibProvider;
@@ -28,18 +26,30 @@ public class VelibProviderListPreference extends ListPreference {
         initVelibProvidersListValues();
     }
 
-
     @Override
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
 
-        int mClickedDialogEntryIndex  =findIndexOfValue(getValue());
+        int mClickedDialogEntryIndex = findIndexOfValue(getValue());
 
-        ListAdapter listAdapter =  new VelibProviderArrayAdapter(getContext(),
-                R.layout.pref_velibprovider_list_row, this.getEntryValues() ,mClickedDialogEntryIndex, this);
+        ListAdapter listAdapter = new VelibProviderArrayAdapter(getContext(),
+                R.layout.pref_velibprovider_list_row, this.getEntryValues(), mClickedDialogEntryIndex, this);
         builder.setAdapter(listAdapter, this);
 
-        super.onPrepareDialogBuilder(builder);
+        builder.setPositiveButton(null, null);
+        //  super.onPrepareDialogBuilder(builder);
 
+    }
+
+    public void setOnVelibProviderClick(int clicked, VelibProvider provider) {
+        Dialog dialog = getDialog();
+        if (this.callChangeListener("" + clicked)) {
+            Toast.makeText(context, "click on " + provider.getProviderName() + " shoudPerist : " + shouldPersist(), Toast.LENGTH_SHORT).show();
+            // Close Dialog
+            setValue(provider.getProviderName());
+            onClick(dialog, DialogInterface.BUTTON_POSITIVE);
+            onDialogClosed(true);
+        }
+        dialog.dismiss();
     }
 
     private void initVelibProvidersListValues() {

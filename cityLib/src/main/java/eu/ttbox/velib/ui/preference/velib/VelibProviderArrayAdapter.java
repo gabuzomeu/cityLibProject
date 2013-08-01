@@ -56,6 +56,7 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
         //get themeId
         String providerKey = this.getItem(position).toString();
         VelibProvider velibProvider = VelibProvider.getVelibProvider(providerKey);
+        row.setId(velibProvider.getProvider());
 
         //set name
         holder.tv.setText(velibProvider.getName());
@@ -108,9 +109,11 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
 
 
      @Override
-    public void onClick(View v)
-    {
-       this.prefSrc.getDialog().dismiss();
-    }
+    public void onClick(View v) {
+         int clicked = v.getId();
+        VelibProvider provider = VelibProvider.getVelibProvider(clicked);
+        this.prefSrc.setOnVelibProviderClick(clicked, provider);
+
+     }
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -317,22 +317,6 @@
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
                         <version>${build-helper-maven-plugin.version}</version>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>
-                                        ${project.build.directory}/${project.artifactId}-signed-aligned.apk
-                                    </file>
-                                    <type>apk</type>
-                                    <classifier>signed-aligned</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>${project.build.directory}/proguard/mapping.txt</file>
-                                    <type>map</type>
-                                    <classifier>release</classifier>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>attach-signed-aligned</id>
@@ -340,6 +324,23 @@
                                 <goals>
                                     <goal>attach-artifact</goal>
                                 </goals>
+                                <configuration>
+                                    <artifacts>
+                                        <artifact>
+                                            <file>
+                                                ${project.build.directory}/${project.artifactId}-signed-aligned.apk
+                                            </file>
+                                            <type>apk</type>
+                                            <classifier>signed-aligned</classifier>
+                                        </artifact>
+                                        <artifact>
+                                            <file>${project.build.directory}/proguard/mapping.txt
+                                            </file>
+                                            <type>map</type>
+                                            <classifier>release</classifier>
+                                        </artifact>
+                                    </artifacts>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -375,11 +376,34 @@
                                     <executable>apk2bar</executable>
                                     <workingDirectory>${project.build.directory}</workingDirectory>
                                     <arguments>
-                                        <argument>{project.build.directory}/${project.artifactId}.apk</argument>
-                                     <!--   <argument>-a TTBox</argument> -->
+                                        <argument>
+                                            {project.build.directory}/${project.artifactId}.apk
+                                        </argument>
+                                        <!--   <argument>-a TTBox</argument> -->
                                     </arguments>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>blackberry-signer</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>batchbar-signer</executable>
+                                    <workingDirectory>${project.build.directory}</workingDirectory>
+                                    <arguments>
+                                        <argument>
+                                            {project.build.directory}/${project.artifactId}.bar
+                                        </argument>
+                                        <argument>${blackberry.keystore}</argument>
+                                        <argument>${blackberry.keystore.password}</argument>
+                                        <argument>${blackberry.cks.password}</argument>
+                                        <argument>-t ${project.build.directory}/</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+
                         </executions>
 
                     </plugin>
