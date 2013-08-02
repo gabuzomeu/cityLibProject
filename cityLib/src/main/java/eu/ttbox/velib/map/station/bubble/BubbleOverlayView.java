@@ -31,6 +31,10 @@ public class BubbleOverlayView<ITEM> extends FrameLayout {
 
 	private final String TAG = getClass().getSimpleName();
 
+    // Config
+    private final static int DEFAULT_BUBBLE_WIDTH = 230;
+
+
 	private LinearLayout layout;
 	private TextView title;
 	private TextView snippet;
@@ -125,7 +129,7 @@ public class BubbleOverlayView<ITEM> extends FrameLayout {
         float densityMultiplier = context.getResources().getDisplayMetrics().density;
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		//params.gravity = Gravity.NO_GRAVITY;
- 	 	params.width = (int)(250*densityMultiplier);
+ 	 	params.width = (int)(DEFAULT_BUBBLE_WIDTH*densityMultiplier);
 		// params.height = 300;
 
 		addView(layout, params);

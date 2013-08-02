@@ -485,7 +485,7 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
                     // Compute Offset
                     int offsetX = 0; // 150
                     int offsetY = -20; // -20
-                    final int halfBubbleWidth = 150;
+                    final int halfBubbleWidth = balloonView.getWidth()/2;
                     Projection projection = mapView.getProjection();
                     Point bublleLimitPoint = new Point();
                     projection.toMapPixels(point, bublleLimitPoint);

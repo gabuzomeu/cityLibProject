@@ -50,7 +50,7 @@ public class StationDownloadService {
         }
         // Log.i(TAG, String.format( "Starting downloading stations for Provider %s" , velibProvider));
         String urlString = velibProvider.getUrlCarto();
-        if (Log.isLoggable(TAG, Log.DEBUG))
+
             Log.d(TAG, String.format("Starting downloading stations from url [%s]", urlString));
         try {
             URL url = new URL(urlString);
@@ -175,7 +175,7 @@ public class StationDownloadService {
 //							urlConnection.connect();
                             int responseCode = urlConnection.getResponseCode();
                             if (responseCode == HttpURLConnection.HTTP_NOT_MODIFIED) {
-                                Log.i(TAG, String.format("Http response Url :\t %s \t Response Code HTTP_NOT_MODIFIED", urlString));
+                                Log.d(TAG, String.format("Http response Url :\t %s \t Response Code HTTP_NOT_MODIFIED", urlString));
                                 // Set Update Time
                                 station.setVeloUpdated(System.currentTimeMillis());
                             } else if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -197,7 +197,7 @@ public class StationDownloadService {
                                 }
                                 if (Log.isLoggable(TAG, Log.INFO)) {
                                     long end = System.currentTimeMillis();
-                                    Log.i(TAG, String.format("Http download Url :\t %s \t Dowloaded Content-Encoding=%s in %s ms.", urlString, contentEncoding, (end - now)));
+                                    Log.d(TAG, String.format("Http download Url :\t %s \t Dowloaded Content-Encoding=%s in %s ms.", urlString, contentEncoding, (end - now)));
                                 }
 
                             } else {
