@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MyTheme" parent="@android:style/Theme.Holo"> 
-     </style>
+    <style name="MyTheme" parent="Theme.AppCompat" />
+
+ <!--   <style name="MyTheme" parent="@android:style/Theme.Holo"/> -->
 
     <style name="MyActionBar" parent="android:style/Widget.Holo.ActionBar">
         <item name="android:background">@drawable/background_map_actionbar</item> 

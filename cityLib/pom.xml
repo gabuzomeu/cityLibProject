@@ -52,13 +52,20 @@
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v13</artifactId>
-            <version>${compatibility-v13.version}</version>
+            <version>${android-compatibility.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.actionbarsherlock</groupId>
-            <artifactId>actionbarsherlock</artifactId>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>${android-compatibility.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>${android-compatibility.version}</version>
             <type>apklib</type>
         </dependency>
+
         <dependency>
             <groupId>com.jeremyfeinstein.slidingmenu</groupId>
             <artifactId>slidingmenu</artifactId>

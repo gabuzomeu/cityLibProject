@@ -10,11 +10,10 @@ import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Tracker;
 
@@ -31,13 +30,7 @@ import eu.ttbox.velib.ui.preference.VelibPreferenceActivity;
  * <p/>
  * For sample implementation :
  *
- * @see http
- *      ://developer.android.com/resources/samples/SearchableDictionary/src/com
- *      /example/android/searchabledict/SearchableDictionary.html
- *      <p/>
- *      For howto use cursor:
- * @see http://mobile.tutsplus.com/tutorials/android/android-sdk_loading-
- *      data_cursorloader/
+ * @see <a href="http://developer.android.com/resources/samples/SearchableDictionary/src/com/example/android/searchabledict/SearchableDictionary.html">SearchableDictionary</a>
  */
 public class SearchableVeloActivity extends CityLibSlidingMenuFragmentActivity {
 
@@ -141,7 +134,7 @@ public class SearchableVeloActivity extends CityLibSlidingMenuFragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Création d'un MenuInflater qui va permettre d'instancier un Menu XML
         // en un objet Menu
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -176,7 +169,7 @@ public class SearchableVeloActivity extends CityLibSlidingMenuFragmentActivity {
 //            }); 
 //        }
 
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

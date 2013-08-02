@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:citylib="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/menuOptions"
@@ -10,7 +10,7 @@
         android:id="@+id/menu_search"
        
         android:icon="@drawable/ic_menu_search"
-        android:showAsAction="collapseActionView|ifRoom"
+        citylib:showAsAction="collapseActionView|ifRoom"
         android:title="@string/menu_search"/>
     <!-- <item -->
     <!-- android:id="@+id/menuSearch" -->

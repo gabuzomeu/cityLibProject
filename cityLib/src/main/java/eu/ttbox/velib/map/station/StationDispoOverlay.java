@@ -461,19 +461,11 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
         }
     }
 
-    private void hideBubble() {
-        if (balloonView != null) {
-            balloonView.setVisibility(View.GONE);
-            mapView.removeView(balloonView);
-            balloonViewLayoutParams = null;
-        }
-    }
 
     private void drawInfoWindowV2(Canvas canvas, MapView mapView, boolean shadow, long nowInMs) {
         int balloonBottomOffset = 0;
         if (!shadow) {
             if (selectedStation != null) {
-
                 if (balloonView == null) {
                     balloonView = new BubbleOverlayView<Station>(context, velibService, balloonBottomOffset);
                     balloonView.setVisibility(View.GONE);
@@ -482,9 +474,7 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
                 boolean balloonViewNotVisible = balloonView.getVisibility() != View.VISIBLE;
                 if (balloonViewNotVisible) {
                     GeoPoint point = selectedStation.asGeoPoint();
-                    // Compute Offset
                     int offsetX = 0; // 150
-                    int offsetY = -20; // -20
                     final int halfBubbleWidth = balloonView.getWidth()/2;
                     Projection projection = mapView.getProjection();
                     Point bublleLimitPoint = new Point();
@@ -517,10 +507,8 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
                     balloonView.setVisibility(View.VISIBLE);
 
                     // Prepare Bubble Layout
-                    boolean isRecycled = balloonViewLayoutParams!=null;
-                    balloonViewLayoutParams = new MapView.LayoutParams(MapView.LayoutParams.WRAP_CONTENT,
-                            MapView.LayoutParams.WRAP_CONTENT, point, MapView.LayoutParams.BOTTOM_CENTER,
-                            offsetX, offsetY);
+                    boolean isRecycled = false;// balloonViewLayoutParams!=null;
+                    balloonViewLayoutParams = createBubbleLayoutParams(point, offsetX);
                     if (isRecycled) {
                         balloonView.setLayoutParams(balloonViewLayoutParams);
                     } else {
@@ -537,6 +525,34 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
         }
     }
 
+
+    private void hideBubble() {
+        if (balloonView != null) {
+            balloonView.setVisibility(View.GONE);
+            mapView.removeView(balloonView);
+          //  balloonViewLayoutParams = null;
+        }
+    }
+
+
+    private MapView.LayoutParams createBubbleLayoutParams(  GeoPoint point,  int offsetX ) {
+        // Compute Offset
+
+        int offsetY = -20; // -20
+        // Position Layout
+        MapView.LayoutParams result = balloonViewLayoutParams;
+        if (balloonViewLayoutParams==null) {
+            result =  new MapView.LayoutParams(MapView.LayoutParams.WRAP_CONTENT,
+                    MapView.LayoutParams.WRAP_CONTENT, point, MapView.LayoutParams.BOTTOM_CENTER,
+                    offsetX, offsetY);
+        } else {
+            balloonViewLayoutParams.geoPoint = point;
+            balloonViewLayoutParams.offsetX = offsetX;
+        }
+
+        return result;
+    }
+
     private void mapViewInvalidate() {
         // mapView.invalidate();
         mapView.postInvalidate();
@@ -544,7 +560,8 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
 
     private void mapViewInvalidate(Rect dirty) {
         // mapView.invalidate(dirty);
-        mapView.postInvalidate(dirty.left, dirty.top, dirty.right, dirty.bottom);
+        // mapView.postInvalidate(dirty.left, dirty.top, dirty.right, dirty.bottom);
+        mapView.invalidateMapCoordinates(dirty );
     }
 
     @Override

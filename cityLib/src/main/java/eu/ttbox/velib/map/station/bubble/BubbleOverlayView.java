@@ -130,7 +130,7 @@ public class BubbleOverlayView<ITEM> extends FrameLayout {
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		//params.gravity = Gravity.NO_GRAVITY;
  	 	params.width = (int)(DEFAULT_BUBBLE_WIDTH*densityMultiplier);
-		// params.height = 300;
+
 
 		addView(layout, params);
 	}
