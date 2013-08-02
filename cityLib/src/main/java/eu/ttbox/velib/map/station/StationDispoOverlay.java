@@ -321,7 +321,7 @@ public class StationDispoOverlay extends Overlay implements OnStationDispoUpdate
         }
         if (isRemovePriorPopup || selectedStation != null) {
             hideBubble();
-            mapView.invalidate();
+            mapViewInvalidate();
             onHandleEvent = true;
         }
         // Lastly return true if we handled this onTap()
