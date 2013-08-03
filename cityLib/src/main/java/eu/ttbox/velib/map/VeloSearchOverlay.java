@@ -1,14 +1,15 @@
 package eu.ttbox.velib.map;
 
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.Overlay;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Overlay;
+
 import eu.ttbox.velib.VelibMapActivity;
 
 public class VeloSearchOverlay extends Overlay {

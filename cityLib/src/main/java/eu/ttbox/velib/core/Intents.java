@@ -1,9 +1,10 @@
 package eu.ttbox.velib.core;
 
-import org.osmdroid.tileprovider.tilesource.ITileSource;
-
 import android.content.Context;
 import android.content.Intent;
+
+import org.osmdroid.tileprovider.tilesource.ITileSource;
+
 import eu.ttbox.velib.model.VelibProvider;
 import eu.ttbox.velib.service.osm.OsmMapTilesDownloadService;
 import eu.ttbox.velib.ui.search.SearchableVeloActivity;

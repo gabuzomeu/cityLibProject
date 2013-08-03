@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
 import eu.ttbox.velib.GeocoderContentProvider;
 import eu.ttbox.velib.GeocoderContentProvider.GeocoderColumns;
 import eu.ttbox.velib.R;

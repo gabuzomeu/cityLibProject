@@ -1,5 +1,11 @@
 package eu.ttbox.velib.service.download.cyclocity;
 
+import android.content.ContentValues;
+import android.util.Log;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -10,11 +16,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import android.content.ContentValues;
-import android.util.Log;
 import eu.ttbox.velib.model.Arrondissement;
 import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.VelibProvider;

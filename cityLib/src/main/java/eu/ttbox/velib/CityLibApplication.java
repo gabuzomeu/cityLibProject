@@ -1,10 +1,5 @@
 package eu.ttbox.velib;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.ExceptionReporter;
-import com.google.analytics.tracking.android.GAServiceManager;
-import com.google.analytics.tracking.android.Tracker;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +9,10 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.GAServiceManager;
+import com.google.analytics.tracking.android.Tracker;
 
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.ui.help.HelpMainActivity;

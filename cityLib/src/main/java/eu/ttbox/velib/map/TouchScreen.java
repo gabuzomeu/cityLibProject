@@ -1,9 +1,5 @@
 package eu.ttbox.velib.map;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,6 +8,10 @@ import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class TouchScreen extends LinearLayout {
 

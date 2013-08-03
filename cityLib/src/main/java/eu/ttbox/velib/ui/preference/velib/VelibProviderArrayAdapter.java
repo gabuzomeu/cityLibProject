@@ -2,7 +2,6 @@ package eu.ttbox.velib.ui.preference.velib;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.format.DateUtils;

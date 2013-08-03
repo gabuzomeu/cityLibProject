@@ -2,11 +2,11 @@ package eu.ttbox.velib.ui.search.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.location.LocationListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
+
 import eu.ttbox.velib.R;
 
 public class GeocoderItemCurAdapter extends ResourceCursorAdapter {

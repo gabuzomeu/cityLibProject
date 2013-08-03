@@ -1,5 +1,10 @@
 package eu.ttbox.velib.service.ws.direction;
 
+import android.content.Context;
+import android.util.Log;
+
+import org.json.JSONException;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,10 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-import org.json.JSONException;
-
-import android.content.Context;
-import android.util.Log;
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirection;
 import eu.ttbox.velib.service.ws.direction.parser.GoogleDirectionParser;

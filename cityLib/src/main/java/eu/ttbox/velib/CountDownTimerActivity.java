@@ -1,7 +1,5 @@
 package eu.ttbox.velib;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -16,6 +14,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+
 import eu.ttbox.velib.countdown.CountdownLayout;
 import eu.ttbox.velib.countdown.CountdownTimerService;
 import eu.ttbox.velib.countdown.NumberPicker;

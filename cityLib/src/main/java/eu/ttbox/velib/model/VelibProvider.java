@@ -1,10 +1,11 @@
 package eu.ttbox.velib.model;
 
-import java.util.ArrayList;
+import android.graphics.Color;
 
 import org.osmdroid.util.GeoPoint;
 
-import android.graphics.Color;
+import java.util.ArrayList;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.model.geo.GeoPointProvider;
 import eu.ttbox.velib.service.download.VeloServiceParser;

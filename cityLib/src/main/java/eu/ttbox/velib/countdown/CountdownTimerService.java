@@ -1,8 +1,5 @@
 package eu.ttbox.velib.countdown;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,6 +17,10 @@ import android.os.PowerManager;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import eu.ttbox.velib.CountDownTimerActivity;
 import eu.ttbox.velib.R;
 

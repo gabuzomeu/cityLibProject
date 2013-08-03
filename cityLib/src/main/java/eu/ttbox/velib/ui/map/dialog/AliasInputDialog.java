@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.text.Editable;
 import android.widget.EditText;
+
 import eu.ttbox.velib.R;
 
 public class AliasInputDialog extends AlertDialog implements OnClickListener {

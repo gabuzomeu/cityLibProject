@@ -9,6 +9,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.view.View;
+
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.Station;
 

@@ -3,6 +3,7 @@ package eu.ttbox.velib.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.widget.TextView;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.service.database.Velo.VeloColumns;
 

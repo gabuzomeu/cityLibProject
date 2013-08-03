@@ -1,12 +1,12 @@
 package eu.ttbox.velib.service.download.georss;
 
-import java.util.ArrayList;
+import android.util.Log;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import android.util.Log;
+import java.util.ArrayList;
 
 /**
  * Sample: http://earthquake.usgs.gov/earthquakes/catalogs/1day-M2.5.xml Sample: http://digital.cs.usu.edu/~vkulyukin/vkweb/earthquakes.xml

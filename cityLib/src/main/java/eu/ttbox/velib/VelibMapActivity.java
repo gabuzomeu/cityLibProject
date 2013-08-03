@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.WindowManager;
 
-
 import com.google.analytics.tracking.android.EasyTracker;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 

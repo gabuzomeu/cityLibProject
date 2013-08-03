@@ -1,9 +1,5 @@
 package eu.ttbox.velib.ui.search.adapter;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.hardware.Sensor;
@@ -20,6 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import eu.ttbox.osm.ui.map.mylocation.CompassEnum;
 import eu.ttbox.osm.ui.map.mylocation.sensor.LocationUtils;
 import eu.ttbox.velib.R;

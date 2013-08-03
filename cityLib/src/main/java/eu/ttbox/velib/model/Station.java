@@ -1,10 +1,11 @@
 package eu.ttbox.velib.model;
 
-import java.util.Date;
+import android.location.Location;
 
 import org.osmdroid.util.GeoPoint;
 
-import android.location.Location;
+import java.util.Date;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.model.geo.GeoPointProvider;
 import eu.ttbox.velib.model.geo.LatLngE6Provider;

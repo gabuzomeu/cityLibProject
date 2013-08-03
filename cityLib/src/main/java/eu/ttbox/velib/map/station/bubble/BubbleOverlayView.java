@@ -3,7 +3,6 @@ package eu.ttbox.velib.map.station.bubble;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -11,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import eu.ttbox.osm.core.ExternalIntents;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.core.DateUtils;

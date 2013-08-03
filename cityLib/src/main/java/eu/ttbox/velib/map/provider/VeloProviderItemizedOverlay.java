@@ -1,12 +1,5 @@
 package eu.ttbox.velib.map.provider;
 
-import java.util.ArrayList;
-
-import org.osmdroid.DefaultResourceProxyImpl;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
@@ -15,6 +8,14 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+
+import org.osmdroid.DefaultResourceProxyImpl;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+
+import java.util.ArrayList;
+
 import eu.ttbox.velib.map.geo.BoundingE6Box;
 import eu.ttbox.velib.model.VelibProvider;
 import eu.ttbox.velib.service.VelibService;

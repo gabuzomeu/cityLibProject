@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.util.Log;
+
 import eu.ttbox.velib.model.FavoriteIconEnum;
 import eu.ttbox.velib.model.Station;
 

@@ -1,12 +1,12 @@
 package eu.ttbox.velib.service.osm;
 
-import java.util.Iterator;
+import android.util.Log;
 
 import org.osmdroid.mtp.adt.OSMTileInfo;
 import org.osmdroid.mtp.util.Util;
 import org.osmdroid.tileprovider.MapTile;
 
-import android.util.Log;
+import java.util.Iterator;
 
 public class TileMapIterator implements Iterator<MapTile> {
 

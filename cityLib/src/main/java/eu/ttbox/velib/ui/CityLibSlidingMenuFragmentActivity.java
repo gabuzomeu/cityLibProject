@@ -2,6 +2,7 @@ package eu.ttbox.velib.ui;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,6 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivityBase;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivityHelper;
 
 import eu.ttbox.velib.R;
-import android.support.v7.app.ActionBarActivity;
 
 public class CityLibSlidingMenuFragmentActivity extends ActionBarActivity implements SlidingActivityBase {
 

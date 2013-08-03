@@ -3,14 +3,14 @@ package eu.ttbox.velib.map.station.drawable;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Picture;
-import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.util.Log;
+
 import eu.ttbox.osm.ui.map.mylocation.CompassPictureFactory;
 
 public class StationCompassView extends StationDispoIcView {

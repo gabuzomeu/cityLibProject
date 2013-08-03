@@ -1,8 +1,8 @@
 package eu.ttbox.velib.service.ws.direction.model;
 
-import java.util.ArrayList;
-
 import org.osmdroid.util.GeoPoint;
+
+import java.util.ArrayList;
 
 public class GoogleDirectionRoute {
 

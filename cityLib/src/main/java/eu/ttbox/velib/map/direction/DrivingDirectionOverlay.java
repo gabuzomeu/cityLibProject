@@ -1,11 +1,12 @@
 package eu.ttbox.velib.map.direction;
 
+import android.content.Context;
+import android.graphics.Canvas;
+
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Overlay;
 
-import android.content.Context;
-import android.graphics.Canvas;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirection;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirectionRoute;
 import eu.ttbox.velib.service.ws.direction.parser.GoogleDirectionStatusEnum;

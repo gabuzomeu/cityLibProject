@@ -14,6 +14,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import eu.ttbox.velib.R;
 
 /**

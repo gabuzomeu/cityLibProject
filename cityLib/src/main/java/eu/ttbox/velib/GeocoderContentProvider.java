@@ -1,8 +1,5 @@
 package eu.ttbox.velib;
 
-import java.io.IOException;
-import java.util.List;
-
 import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -15,6 +12,10 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
+
+import java.io.IOException;
+import java.util.List;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.model.VelibProvider;
 

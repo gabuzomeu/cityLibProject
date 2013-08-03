@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import eu.ttbox.velib.service.database.Velo.VeloColumns;
 
 public class VelibBaseSQLite extends SQLiteOpenHelper {

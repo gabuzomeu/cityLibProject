@@ -7,6 +7,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
+
 import eu.ttbox.velib.CityLibApplication;
 import eu.ttbox.velib.R;
 

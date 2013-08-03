@@ -1,10 +1,11 @@
 package eu.ttbox.velib.service.geo;
 
-import java.util.ArrayList;
+import android.util.Log;
 
 import org.osmdroid.util.GeoPoint;
 
-import android.util.Log;
+import java.util.ArrayList;
+
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.model.geo.LatLngE6Provider;
 import eu.ttbox.velib.model.geo.LatLngProvider;

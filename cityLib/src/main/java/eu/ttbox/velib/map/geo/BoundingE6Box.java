@@ -1,13 +1,14 @@
 package eu.ttbox.velib.map.geo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.graphics.Rect;
 
 import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
-import android.graphics.Rect;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import eu.ttbox.velib.model.geo.GeoPointProvider;
 
 public class BoundingE6Box<E extends GeoPointProvider> implements Serializable {

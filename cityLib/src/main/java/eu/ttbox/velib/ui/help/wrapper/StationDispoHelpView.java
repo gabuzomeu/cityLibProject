@@ -11,6 +11,7 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
+
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.map.station.drawable.StationDispoDrawable;
 import eu.ttbox.velib.map.station.drawable.StationDispoIcDrawable;

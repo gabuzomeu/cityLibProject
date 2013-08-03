@@ -1,13 +1,5 @@
 package eu.ttbox.velib.service.osm;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import org.osmdroid.tileprovider.MapTile;
-import org.osmdroid.tileprovider.tilesource.ITileSource;
-import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -29,6 +21,15 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import org.osmdroid.tileprovider.MapTile;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
+import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import eu.ttbox.osm.tiles.MapTileProviderTTbox;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.VelibMapActivity;

@@ -1,13 +1,13 @@
 package eu.ttbox.velib.service.ws.forecast;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.util.Log;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import android.util.Log;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Google Forecast Parser for service @see http://www.google.com/ig/api?weather=paris

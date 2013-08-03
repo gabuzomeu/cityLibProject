@@ -1,12 +1,13 @@
 package eu.ttbox.velib.map.provider;
 
-import java.util.ArrayList;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.VelibProvider;

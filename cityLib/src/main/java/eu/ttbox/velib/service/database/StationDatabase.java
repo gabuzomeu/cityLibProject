@@ -1,8 +1,5 @@
 package eu.ttbox.velib.service.database;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.SearchManager;
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,6 +7,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.StationHelper;
 import eu.ttbox.velib.model.VelibProvider;

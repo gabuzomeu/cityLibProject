@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
+
 import eu.ttbox.velib.R;
 
 public enum FavoriteIconEnum {

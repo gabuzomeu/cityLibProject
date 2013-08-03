@@ -1,10 +1,10 @@
 package eu.ttbox.velib.service.download.cyclocity;
 
-import java.util.ArrayList;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import java.util.ArrayList;
 
 import eu.ttbox.velib.model.Arrondissement;
 import eu.ttbox.velib.model.Station;

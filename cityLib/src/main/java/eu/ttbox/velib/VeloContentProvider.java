@@ -1,7 +1,5 @@
 package eu.ttbox.velib;
 
-import java.util.Arrays;
-
 import android.app.SearchManager;
 import android.app.backup.BackupManager;
 import android.content.ContentProvider;
@@ -12,7 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.util.Log;
+
 import eu.ttbox.velib.service.database.StationDatabase;
 import eu.ttbox.velib.service.database.Velo.VeloColumns;
 

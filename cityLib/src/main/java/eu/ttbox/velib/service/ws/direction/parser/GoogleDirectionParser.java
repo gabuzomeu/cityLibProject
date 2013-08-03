@@ -1,17 +1,18 @@
 package eu.ttbox.velib.service.ws.direction.parser;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.util.GeoPoint;
 
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirection;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirectionLeg;
 import eu.ttbox.velib.service.ws.direction.model.GoogleDirectionRoute;

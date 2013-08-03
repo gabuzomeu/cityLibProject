@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.FavoriteIconEnum;
 
