@@ -422,7 +422,7 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 	}
 
 	public void centerOnMyLocationFix() { 
-		mapView.getScroller().forceFinished(true); 
+//		mapView.getScroller().forceFinished(true); 
 		myLocation.enableFollowLocation(); 
 		myLocation.runOnFirstFix(new Runnable() {
 
