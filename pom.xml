@@ -6,7 +6,7 @@
 
    <groupId>eu.ttbox.android.cityLib</groupId>
    <artifactId>cityLibProject</artifactId>
-   <version>0.3.4</version>
+   <version>0.3.5-SNAPSHOT</version>
 
     <name>CityLib Project</name>
 
