@@ -8,6 +8,12 @@
         android:padding="5dp"
         android:clickable="true">
 
+    <Button android:id="@+id/pref_velibprovider_update_button"
+            android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Update"
+     />
+
     <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
@@ -16,13 +22,11 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical">
 
-        <TextView
+        <TextView android:id="@+id/themename"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/themename"
                 android:text="string/android"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_marginBottom="5dp" />

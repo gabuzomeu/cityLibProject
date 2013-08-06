@@ -3,8 +3,12 @@ package eu.ttbox.velib.ui.preference.velib;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.widget.ListAdapter;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.model.VelibProvider;
+import eu.ttbox.velib.service.VelibService;
 
 /**
  * http://blog.isys-labs.com/creating-a-custom-listpreference/
@@ -19,19 +24,21 @@ import eu.ttbox.velib.model.VelibProvider;
 public class VelibProviderListPreference extends ListPreference {
 
     Context context;
+    VelibProviderArrayAdapter listAdapter ;
 
     public VelibProviderListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         initVelibProvidersListValues();
+
+
     }
 
     @Override
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
 
         int mClickedDialogEntryIndex = findIndexOfValue(getValue());
-
-        ListAdapter listAdapter = new VelibProviderArrayAdapter(getContext(),
+        listAdapter = new VelibProviderArrayAdapter(getContext(),
                 R.layout.pref_velibprovider_list_row, this.getEntryValues(), mClickedDialogEntryIndex, this);
         builder.setAdapter(listAdapter, this);
 
@@ -66,4 +73,22 @@ public class VelibProviderListPreference extends ListPreference {
         provilderList.setEntryValues(entryValues);
     }
 
+    private VelibServiceConnection velibServiceConnection;
+
+    VelibService velibService;
+
+    private class VelibServiceConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            velibService = null;
+//            listAdapter.setVelibService(null);
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            velibService = ((VelibService.LocalBinder) service).getService();
+  //          listAdapter.setVelibService(velibService);
+        }
+    }
 }

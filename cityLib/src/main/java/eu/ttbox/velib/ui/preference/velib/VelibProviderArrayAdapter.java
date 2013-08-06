@@ -9,11 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import eu.ttbox.velib.R;
+import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.VelibProvider;
+import eu.ttbox.velib.service.VelibService;
 
 public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implements View.OnClickListener {
 
@@ -27,16 +33,21 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
     private SharedPreferences prefs;
     private LayoutInflater mInflater;
 
-    public VelibProviderArrayAdapter(Context context, int textViewResourceId, CharSequence[] objects, int selected, VelibProviderListPreference prefSrc) {
+
+    public VelibProviderArrayAdapter(Context context, int textViewResourceId, CharSequence[] objects, int selected
+            , VelibProviderListPreference prefSrc)  {
         super(context, textViewResourceId, objects);
         this.mContext = context;
         this.index = selected;
         this.textViewResourceId = textViewResourceId;
         this.prefSrc  = prefSrc;
+
         // Service
         this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
     }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -50,11 +61,11 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
         return v;
     }
 
-    public void bindView(View row, int position) {
+    public void bindView(final View row, int position) {
         ViewHolder holder = (ViewHolder) row.getTag();
         //get themeId
         String providerKey = this.getItem(position).toString();
-        VelibProvider velibProvider = VelibProvider.getVelibProvider(providerKey);
+         final VelibProvider velibProvider = VelibProvider.getVelibProvider(providerKey);
         row.setId(velibProvider.getProvider());
 
         //set name
@@ -75,6 +86,16 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
         }
         holder.lastUpdateTime.setText(lastUpdateTime);
 
+        // Update Button
+        holder.updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+           //      ArrayList<Station> stations = velibService.getStationsByProviderWithCheckUpdateDate(velibProvider, true);
+           //     Toast.makeText(mContext, "Download Stations size " + stations.size(), Toast.LENGTH_SHORT).show();
+           //     row.postInvalidate();
+            }
+        });
+
     }
 
     public View newView(int position, ViewGroup parent) {
@@ -92,6 +113,8 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
         holder.tb.setFocusable(false);
         holder.tb.setFocusableInTouchMode(false);
 
+        holder.updateButton = (Button) view.findViewById(R.id.pref_velibprovider_update_button);
+
         // and store it inside the layout.
         view.setTag(holder);
         // Listener
@@ -104,12 +127,13 @@ public class VelibProviderArrayAdapter extends ArrayAdapter<CharSequence> implem
         TextView tv;
         TextView lastUpdateTime;
         RadioButton tb;
+        Button updateButton;
     }
 
 
      @Override
     public void onClick(View v) {
-         int clicked = v.getId();
+        int clicked = v.getId();
         VelibProvider provider = VelibProvider.getVelibProvider(clicked);
         this.prefSrc.setOnVelibProviderClick(clicked, provider);
 
