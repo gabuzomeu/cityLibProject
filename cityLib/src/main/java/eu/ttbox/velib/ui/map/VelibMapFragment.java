@@ -252,15 +252,16 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 		return mapView;
 	}
 
+
 	// ===========================================================
 	// Life Cycle
 	// ===========================================================
 
 	@Override
 	public void onDestroy() {
-		if (Log.isLoggable(TAG, Log.INFO)) {
-			Log.i(TAG, "### ### ### ### ### onDestroy call ### ### ### ### ###");
-		}
+
+			Log.d(TAG, "### ### ### ### ### onDestroy call ### ### ### ### ###");
+
 		// Tuer la Thread
 		isThreadRunnning.set(false);
 		timer.shutdownNow();
@@ -276,9 +277,9 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 
 	@Override
 	public void onPause() {
-		if (Log.isLoggable(TAG, Log.INFO)) {
-			Log.i(TAG, "### ### ### ### ### onPause call ### ### ### ### ###");
-		}
+
+			Log.d(TAG, "### ### ### ### ### onPause call ### ### ### ### ###");
+
 		// Mettre la Thread en pause
 		isThreadPausing.set(true);
 
@@ -310,12 +311,12 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 
 	@Override
 	public void onResume() {
-		if (Log.isLoggable(TAG, Log.INFO)) {
-			Log.i(TAG, "### ### ### ### ### onResume call ### ### ### ### ###");
-		}
+        super.onResume();
+		Log.d(TAG, "### ### ### ### ### onResume call ### ### ### ### ###");
+
 		// Relancer la Thread
 		isThreadPausing.set(false);
-		super.onResume();
+
 
 		// read preference
 		ITileSource tileSource = getPreferenceMapViewTileSource();
@@ -339,6 +340,8 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 		myLocation.enableMyLocation();
 		myLocation.enableCompass();
 		myLocation.enableThreadExecutors();
+        // Super
+
 
 	}
 
