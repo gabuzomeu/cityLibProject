@@ -16,3 +16,6 @@ gen-external-apklibs
 classes
 out
 *.log
+
+# Gradle
+local.properties
