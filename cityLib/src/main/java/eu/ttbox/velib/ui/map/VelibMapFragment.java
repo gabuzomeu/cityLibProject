@@ -66,6 +66,7 @@ import eu.ttbox.velib.service.geo.GeoUtils;
  * @author deostem
  * 
  */
+@Deprecated
 public class VelibMapFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener, VelibProviderContainer {
 
 	private static final String TAG = "VelibMapFragment";
@@ -113,9 +114,10 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 	private AtomicBoolean isThreadPausing = new AtomicBoolean();
 
 	// Message Handler
-	protected static final int UI_MSG_ANIMATE_TO_GEOPOINT = 0;
 	protected static final int UI_MSG_TOAST = 1;
 	protected static final int UI_MSG_TOAST_ERROR = 2;
+    protected static final int UI_MSG_ANIMATE_TO_GEOPOINT = 10;
+    protected static final int UI_MSG_ZOOM_MAX = 11;
 
 	private Handler uiHandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -134,6 +136,7 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 					}
 					break;
 				}
+
 				case UI_MSG_TOAST: {
 					String msgToast = (String) msg.obj;
 					Toast.makeText(getActivity(), msgToast, Toast.LENGTH_SHORT).show();
@@ -425,9 +428,9 @@ public class VelibMapFragment extends Fragment implements SharedPreferences.OnSh
 		return result;
 	}
 
-	public void centerOnMyLocationFix() { 
-//		mapView.getScroller().forceFinished(true); 
-		myLocation.enableFollowLocation(); 
+	public void centerOnMyLocationFix() {
+//		mapView.getScroller().forceFinished(true);
+		myLocation.enableFollowLocation();
 		myLocation.runOnFirstFix(new Runnable() {
 
 			@Override

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import eu.ttbox.osm.ui.map.OsmMapFragment;
 import eu.ttbox.osm.ui.map.mylocation.dialog.GpsActivateAskDialog;
+import eu.ttbox.osm.core.LocationUtils;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.map.provider.VeloProviderItemizedOverlay;
@@ -39,7 +42,7 @@ import eu.ttbox.velib.model.Station;
 import eu.ttbox.velib.model.VelibProvider;
 import eu.ttbox.velib.service.VelibService;
 
-public abstract class CityLibMapFragment extends OsmMapFragment
+public class CityLibMapFragment extends OsmMapFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener, VelibProviderContainer {
 
     private static final String TAG = "CityLibMapFragment";
@@ -132,18 +135,19 @@ public abstract class CityLibMapFragment extends OsmMapFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map, container, false);
-        // Map
-        initMap();
-
-        ViewGroup mapViewContainer = (ViewGroup) v.findViewById(R.id.mapViewContainer);
-        mapViewContainer.addView((View) mapView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
 
         // Service
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
         privateSharedPreferences = getActivity().getSharedPreferences(MapConstants.PREFS_NAME, Context.MODE_PRIVATE);
         timer = new ScheduledThreadPoolExecutor(1);
+
+        // Map
+        // -------------
+        initMap();
+        ViewGroup mapViewContainer = (ViewGroup) v.findViewById(R.id.mapViewContainer);
+        mapViewContainer.addView((View) mapView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
 
         // Binding
         // -------------
@@ -179,18 +183,22 @@ public abstract class CityLibMapFragment extends OsmMapFragment
         velibServiceConnection = new VelibServiceConnection();
         getActivity().bindService(new Intent(getActivity(), VelibService.class), velibServiceConnection, Context.BIND_AUTO_CREATE);
 
-        GeoPoint lastKnownLocationAsGeoPoint = myLocation.getLastKnownLocationAsGeoPoint();
+
+        GeoPoint lastKnownLocationAsGeoPoint = null;
+        final LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        lastKnownLocationAsGeoPoint =  LocationUtils.getLastKnownLocationAsGeoPoint(locationManager);
         velibProvider = computeConditionVelibProvider(lastKnownLocationAsGeoPoint);
 
 
         // Check For Gps
         // --------------
-        boolean enableGPS = isGpsLocationProviderIsEnable();
+        boolean enableGPS = LocationUtils.isGpsLocationProviderIsEnable(locationManager);
         if (askToEnableGps && !enableGPS) {
             new GpsActivateAskDialog(getActivity()).show();
         }
-        // Initialiser le booléen isThreadRunning
+        // Initialiser le booleen isThreadRunning
         isThreadRunnning.set(true);
+
         return v;
     }
 
@@ -204,7 +212,8 @@ public abstract class CityLibMapFragment extends OsmMapFragment
     // Overwide
     // ===========================================================
 
-    public ITileSource getPreferenceMapViewTileSource() {
+    @Override
+    public ITileSource getPreferenceMapViewTile() {
         return getPreferenceMapViewTileSource(privateSharedPreferences);
     }
 
@@ -232,6 +241,8 @@ public abstract class CityLibMapFragment extends OsmMapFragment
         Log.d(TAG, "### ### ### ### ### onPause call ### ### ### ### ###");
         // Mettre la Thread en pause
         isThreadPausing.set(true);
+
+        saveMapPreference(privateSharedPreferences);
         // Desactivated
         if (stationOverlay != null) {
             stationOverlay.disableTimer();
@@ -248,6 +259,8 @@ public abstract class CityLibMapFragment extends OsmMapFragment
         Log.d(TAG, "### ### ### ### ### onResume call ### ### ### ### ###");
         // Relancer la Thread
         isThreadPausing.set(false);
+
+        restoreMapPreference(privateSharedPreferences);
 
         // Enable Status
         if (stationOverlay != null) {
@@ -426,26 +439,7 @@ public abstract class CityLibMapFragment extends OsmMapFragment
     // Other
     // ===========================================================
 
-    public boolean isGpsLocationProviderIsEnable() {
-        boolean result = false;
-        if (myLocation != null) {
-            result = myLocation.isGpsLocationProviderIsEnable();
-        }
-        return result;
-    }
 
-    public void centerOnMyLocationFix() {
-//		mapView.getScroller().forceFinished(true);
-        myLocation.enableFollowLocation();
-        myLocation.runOnFirstFix(new Runnable() {
-
-            @Override
-            public void run() {
-//				myLocation.animateToLastFix();
-                mapController.setZoom(17);
-            }
-        });
-    }
 
 
 }

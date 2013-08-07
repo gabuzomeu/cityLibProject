@@ -33,7 +33,7 @@ import android.widget.TextView;
 
 import org.osmdroid.util.GeoPoint;
 
-import eu.ttbox.osm.ui.map.mylocation.sensor.LocationUtils;
+import eu.ttbox.osm.core.LocationUtils;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.VelibMapActivity;
 import eu.ttbox.velib.VeloContentProvider;

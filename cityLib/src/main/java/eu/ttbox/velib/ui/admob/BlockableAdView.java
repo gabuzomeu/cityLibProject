@@ -42,13 +42,16 @@ public class BlockableAdView extends AdView implements SharedPreferences.OnShare
 		init();
 	}
 
-	private void init() {
-		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-		isAddBlocked = sharedPreferences.getBoolean(AppConstants.PREFS_ADD_BLOCKED, false);
-		Log.d(TAG, "Add Blocked : " + isAddBlocked);
-		// Register
-		 sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-	}
+
+    private void init() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        if (sharedPreferences != null) {
+            isAddBlocked = sharedPreferences.getBoolean(AppConstants.PREFS_ADD_BLOCKED, false);
+            Log.d(TAG, "Add Blocked : " + isAddBlocked);
+            // Register
+            //  sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        }
+    }
 
 	// ===========================================================
 	// Preferences

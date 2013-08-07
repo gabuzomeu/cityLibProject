@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import eu.ttbox.osm.ui.map.mylocation.CompassEnum;
-import eu.ttbox.osm.ui.map.mylocation.sensor.LocationUtils;
+import eu.ttbox.osm.core.LocationUtils;
 import eu.ttbox.velib.R;
 import eu.ttbox.velib.core.AppConstants;
 import eu.ttbox.velib.map.station.drawable.StationCompassView;

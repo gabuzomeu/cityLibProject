@@ -26,6 +26,7 @@ import org.osmdroid.views.overlay.TilesOverlay;
 import eu.ttbox.velib.core.Intents;
 import eu.ttbox.velib.model.VelibProvider;
 import eu.ttbox.velib.service.database.Velo.VeloColumns;
+import eu.ttbox.velib.ui.map.CityLibMapFragment;
 import eu.ttbox.velib.ui.map.VelibMapFragment;
 import eu.ttbox.velib.ui.map.VelibProviderContainer;
 import eu.ttbox.velib.ui.preference.VelibPreferenceActivity;
@@ -49,7 +50,7 @@ public class VelibMapActivity extends eu.ttbox.velib.ui.CityLibSlidingMenuFragme
 
     private static final String TAG = "VelibMapActivity";
     int MENU_LAST_ID = 3;
-    private VelibMapFragment mapFragment;
+    private CityLibMapFragment mapFragment;
 
     // ===========================================================
     // Constructors
@@ -97,8 +98,8 @@ public class VelibMapActivity extends eu.ttbox.velib.ui.CityLibSlidingMenuFragme
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
-        if (fragment instanceof VelibMapFragment) {
-            mapFragment = (VelibMapFragment) fragment;
+        if (fragment instanceof CityLibMapFragment) {
+            mapFragment = (CityLibMapFragment) fragment;
         }
     }
 
