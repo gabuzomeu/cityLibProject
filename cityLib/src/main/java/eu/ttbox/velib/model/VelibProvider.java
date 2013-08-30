@@ -1,5 +1,6 @@
 package eu.ttbox.velib.model;
 
+import android.content.Context;
 import android.graphics.Color;
 
 import org.osmdroid.util.GeoPoint;
@@ -89,6 +90,13 @@ public enum VelibProvider implements GeoPointProvider {
 			new String[] { "http://www.velo.toulouse.fr/service/carto", "http://www.velo.toulouse.fr/service/stationdetails/toulouse/%s" }, //
 			new double[] { 43.55724369515301d, 1.40230245215212d, 43.642833569777416d, 1.48781984362323d } //
 	), //
+    FR_STRASBOURG("FR, Strasbourg (67) - Velhop", 48.58476d, 7.750576d, //
+            "www.velhop.strasbourg.eu", VelibServiceProviderAdpater.Velhop, Color.GREEN, //
+            new String[] { "http://carto.strasmap.eu/remote.amf.json/Bike.geometry", "http://carto.strasmap.eu/remote.amf.json/Bike.status" }, //
+            new double[] { 48.5, 7d, 49d, 8d } //
+    ), //
+
+
 		// Other cont
 	AU_BRISBANE("AU, Brisbane - CityCycle", -27.466667d, 153.033333d, //
 			"www.citycycle.com.au", VelibServiceProviderAdpater.CycloCity, Color.BLUE, //
@@ -307,8 +315,8 @@ public enum VelibProvider implements GeoPointProvider {
 		return url;
 	}
 
-	public VeloServiceParser getVeloServiceParser() {
-		return serviceProviderAdpater.getVeloServiceParser();
+	public VeloServiceParser getVeloServiceParser(Context context) {
+		return serviceProviderAdpater.getVeloServiceParser(  context);
 	}
 
 	public double[] getBoundyBoxE6() {

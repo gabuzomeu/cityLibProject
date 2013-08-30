@@ -33,11 +33,14 @@ public class StationDatabase {
 
 
     public static final String SELECT_BY_ENTITY_ID = String.format("%s = ?", VeloColumns.COL_ID);
-    public static final String SELECT_BY_FAVORY = String.format("%s = ?", VeloColumns.COL_FAVORY); 
-    
+    public static final String SELECT_BY_FAVORY = String.format("%s = ?", VeloColumns.COL_FAVORY);
+    public static final String SELECT_BY_PROVIDER_NUMBER = String.format("%s = ? and %s = ?", VeloColumns.COL_PROVIDER, VeloColumns.COL_NUMBER);
+
     public static final String[] ALL_COLS = new String[] { VeloColumns.COL_ID, VeloColumns.COL_PROVIDER, VeloColumns.COL_NUMBER, VeloColumns.COL_LATITUDE_E6, VeloColumns.COL_LONGITUDE_E6,
             VeloColumns.COL_STATION_TOTAL, VeloColumns.COL_STATION_CYCLE, VeloColumns.COL_STATION_PARKING, VeloColumns.COL_STATION_TICKET, VeloColumns.COL_STATION_UPDATE_TIME, VeloColumns.COL_NAME,
             VeloColumns.COL_ADDRESS, VeloColumns.COL_OPEN, VeloColumns.COL_BONUS, VeloColumns.COL_FAVORY, VeloColumns.COL_FAVORY_TYPE, VeloColumns.COL_ALIAS_NAME, VeloColumns.COL_FULLADDRESS };
+
+
 
     public static final HashMap<String, String> MAP_PROJECTION_COLUMN = buildColumnMap();
 

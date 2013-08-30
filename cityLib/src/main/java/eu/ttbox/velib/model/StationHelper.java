@@ -142,6 +142,18 @@ public class StationHelper {
         return favoriteTypeIdx>-1 ? FavoriteIconEnum.getFromName(  cursor.getString(favoriteTypeIdx)) : null;
     }
 
+    public static void updateStationDispoWithContentValues(Station point, ContentValues value) {
+        if (value.containsKey(VeloColumns.COL_STATION_TOTAL)) point.setVeloTotal(value.getAsInteger(VeloColumns.COL_STATION_TOTAL));
+        if (value.containsKey(VeloColumns.COL_STATION_CYCLE)) point.setStationCycle(value.getAsInteger(VeloColumns.COL_STATION_CYCLE ));
+        if (value.containsKey(VeloColumns.COL_STATION_PARKING)) point.setStationParking(value.getAsInteger(VeloColumns.COL_STATION_PARKING ));
+        if (value.containsKey(VeloColumns.COL_STATION_TICKET)) point.setVeloTicket(value.getAsInteger(VeloColumns.COL_STATION_TICKET));
+        if (value.containsKey(VeloColumns.COL_STATION_UPDATE_TIME)) point.setVeloUpdated(value.getAsLong(VeloColumns.COL_STATION_UPDATE_TIME));
+
+        if (value.containsKey(VeloColumns.COL_OPEN)) point.setOpen(value.getAsBoolean(VeloColumns.COL_OPEN  ));
+        if (value.containsKey(VeloColumns.COL_BONUS)) point.setBonus(value.getAsBoolean(VeloColumns.COL_BONUS  ));
+
+    }
+
     public static ContentValues getContentValues(Station point) {
         ContentValues initialValues = new ContentValues();
         if (point.id > AppConstants.UNSET_ID ) {

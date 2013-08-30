@@ -46,8 +46,10 @@ public class VelibService extends Service {
     StationDownloadService downloadService;
     DirectionDownloadService googleDirectionDownloadService;
     Context context;
+
     // Config
     boolean saveUpdateDispoStationsInDb = true;
+
     // ConcurrentLinkedQueue ?
     private LinkedBlockingDeque<Station> databaseUpdateQueue = new LinkedBlockingDeque<Station>();
     private LinkedBlockingDeque<Station> downloadUpdateDispoQueue = new LinkedBlockingDeque<Station>();
@@ -128,6 +130,9 @@ public class VelibService extends Service {
         onStationDispoUpdatedListeners.remove(listener);
     }
 
+    /**
+     * Update the List of Stations
+     */
     public ArrayList<Station> getStationsByProviderWithCheckUpdateDate(VelibProvider velibProvider) {
         String updateKey = VelibProviderLastUpdateHelper.getProviderStationsLastUpdateKey(velibProvider);
         long lastUpdate = prefs.getLong(updateKey, Long.MIN_VALUE);
@@ -136,6 +141,9 @@ public class VelibService extends Service {
         return   getStationsByProviderWithCheckUpdateDate(velibProvider, isToOld);
     }
 
+    /**
+     * Update the List of Stations
+     */
     public ArrayList<Station> getStationsByProviderWithCheckUpdateDate(VelibProvider velibProvider, boolean isToOld) {
         ArrayList<Station> dbStations = this.velibBDD.getStationsByProvider(velibProvider);
         if (dbStations == null || dbStations.isEmpty() || isToOld) {

@@ -1,28 +1,38 @@
 package eu.ttbox.velib.service.provider;
 
+import android.content.Context;
+
 import eu.ttbox.velib.service.download.VeloServiceParser;
 import eu.ttbox.velib.service.download.bixi.BixiServiceParser;
 import eu.ttbox.velib.service.download.cyclocity.CyclocityServiceParser;
+import eu.ttbox.velib.service.download.strasbourg.VelhopServiceParser;
 
 public enum VelibServiceProviderAdpater {
 
 	CycloCity("http://%s/service/carto", "http://%s/service/stationdetails/%s") {
 		@Override
-		public VeloServiceParser createVeloServiceParser() {
+		public VeloServiceParser createVeloServiceParser(Context context) {
 			return new CyclocityServiceParser();
 		}
 	},
 
 	Bixi("http://%s/data/bikeStations.xml", null) {
 		@Override
-		public VeloServiceParser createVeloServiceParser() {
+		public VeloServiceParser createVeloServiceParser(Context context) {
 			return new BixiServiceParser();
 		}
 	},
 
+    Velhop(null, null) {
+        @Override
+        public VeloServiceParser createVeloServiceParser(Context context) {
+            return new VelhopServiceParser(context);
+        }
+    },
+
 	VeloBleu("http://%s/oybike/stands.nsf/getsite?openagent&site=nice&format=json&key=diolev", "http://%s/service/stationdetails/%s") {
 		@Override
-		public VeloServiceParser createVeloServiceParser() {
+		public VeloServiceParser createVeloServiceParser(Context context) {
 			return new CyclocityServiceParser();
 		}
 	};
@@ -60,14 +70,14 @@ public enum VelibServiceProviderAdpater {
 		return url;
 	}
 
-	public VeloServiceParser getVeloServiceParser() {
+	public VeloServiceParser getVeloServiceParser(Context context) {
 		if (veloServiceParser == null) {
-			veloServiceParser = createVeloServiceParser();
+			veloServiceParser = createVeloServiceParser(  context);
 		}
 		return veloServiceParser;
 	}
 
-	protected VeloServiceParser createVeloServiceParser() {
+	protected VeloServiceParser createVeloServiceParser(Context context) {
 		throw new RuntimeException("Not implemented");
 	}
 }

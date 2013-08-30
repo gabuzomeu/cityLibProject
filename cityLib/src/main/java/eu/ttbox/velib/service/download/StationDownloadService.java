@@ -77,7 +77,7 @@ public class StationDownloadService {
 //						Log.i(TAG, String.format("Http Response header Content-Encoding : %s",  contentEncoding));
                         content = new GZIPInputStream(content, 1024);
                     }
-                    VeloServiceParser veloServiceParser = velibProvider.getVeloServiceParser();
+                    VeloServiceParser veloServiceParser = velibProvider.getVeloServiceParser(context);
                     stations = veloServiceParser.parseInputStreamForStations(content, velibProvider);
                     content.close();
                 } else {
@@ -187,7 +187,7 @@ public class StationDownloadService {
                                     content = new GZIPInputStream(content, 1024);
                                 }
                                 try {
-                                    VeloServiceParser veloServiceParser = velibProvider.getVeloServiceParser();
+                                    VeloServiceParser veloServiceParser = velibProvider.getVeloServiceParser(context);
                                     Station dispo = veloServiceParser.parseInputStreamForStationDispo(content, station);
                                     if (dispo != null) {
                                         result = 1;
