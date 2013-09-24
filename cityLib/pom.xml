@@ -300,7 +300,7 @@
                             </manifest>
                             <proguard>
                                 <skip>false</skip>
-                                <config>proguard.cfg</config>
+                                <config>proguard.txt</config>
                             </proguard>
                         </configuration>
                         <executions>
