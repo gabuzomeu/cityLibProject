@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
+import org.osmdroid.api.IMapController;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Overlay;
@@ -32,7 +33,7 @@ public class MyPoiOverlay  extends Overlay implements SharedPreferences.OnShared
 //    private static final String SQL_SORT_DEFAULT = String.format("%s ASC", GeoTrackColumns.COL_TIME);
 
     private Context context;
-    private final MapController mMapController;
+    private final IMapController mMapController;
     private final MapView mapView;
 
     // Constant
